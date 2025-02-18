@@ -1,8 +1,15 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+const todos = [];
+
+// create
+app.post("/", (req, res) => {
+  todos.push({
+    id: todos.length + 1,
+    title: req.body.title,
+  });
+  res.status(200).json({ message: "Todo added successfully." });
 });
 
 app.listen(3000, () => {
