@@ -20,6 +20,17 @@ app.get("/:id", (req, res) => {
   return res.status(200).json(todo);
 });
 
+// update
+app.put("/", (req, res) => {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === req.body.id) {
+      todos[i].title = req.body.title;
+      break;
+    }
+  }
+  res.status(200).json({ message: "Todo updated successfully." });
+});
+
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
 });
