@@ -31,6 +31,18 @@ app.put("/", (req, res) => {
   res.status(200).json({ message: "Todo updated successfully." });
 });
 
+//delete
+app.delete("/:id", (req, res) => {
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].id === req.params.id) {
+      index = i;
+      todos.splice(i, 1);
+      break;
+    }
+  }
+  res.status(200).json({ message: "Todo deleted successfully." });
+});
+
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
 });
