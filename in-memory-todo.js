@@ -12,6 +12,14 @@ app.post("/", (req, res) => {
   res.status(200).json({ message: "Todo added successfully." });
 });
 
+// read
+app.get("/:id", (req, res) => {
+  const todo = todos.find((todo) => {
+    return todo.id === req.params.id;
+  });
+  return res.status(200).json(todo);
+});
+
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
 });
